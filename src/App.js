@@ -2,12 +2,11 @@ import Navbar from './components/Navbar'
 import React from 'react'
 import "antd/dist/antd.css";
 import "./App.css"
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <Navbar/>
-    </div>
-  );
+    <Navbar/>
+  )
 }
 
 export default App;
