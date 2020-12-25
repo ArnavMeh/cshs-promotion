@@ -1,3 +1,20 @@
+@import '~antd/dist/antd.css';
+
 .App {
   background-color: rgb(250, 250, 250);
+}
+
+
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu {
+  margin: 0 20px;
+  margin-top: -1px;
+  margin-bottom: -18px;
+  padding: 0 20px 18px 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected {
+  color: #1890ff;
+  border-bottom: 3px solid #1890ff;
+  padding-bottom: 17px !important;
 }
