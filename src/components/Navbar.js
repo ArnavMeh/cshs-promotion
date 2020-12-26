@@ -4,9 +4,11 @@ import logo from "../images/logo.png";
 import hseapps from  '../images/hseapps.png'
 import hsecourses from '../images/courses.png'
 import hseclubs from '../images/clubs.png'
+import hseprojects from '../images/projects.png'
 
 import Clubs from './Clubs'
 import Courses from './Courses'
+import Projects from './Projects'
 
 import {Button, Menu} from 'antd';
 const block = {
@@ -42,7 +44,7 @@ const Navbar = () => {
                 <div style={{...block, height:"30px"}}>
                     <Menu 
                         mode="horizontal" 
-                        style={{backgroundColor:"transparent", color: "white", borderBottom:"none", fontSize:"16px", width:"400px"}}
+                        style={{backgroundColor:"transparent", color: "white", borderBottom:"none", fontSize:"16px", width:"500px"}}
                         onClick={(e) => {
                             setTab(e.key)
                             console.log(e)
@@ -64,6 +66,10 @@ const Navbar = () => {
                             &nbsp; Clubs
                         </Menu.Item>
                         <Menu.Item style={{color:"white"}} key={3}>
+                            <img src={hseprojects} style={{width:"20px", marginBottom:"4px"}}/>
+                            &nbsp; Projects
+                        </Menu.Item>
+                        <Menu.Item style={{color:"white"}} key={4}>
                             <span style={{display: "inline-block", transform: "rotate(45deg) scale(1.2, .9)", filter: "drop-shadow(0 2px #b5daff)", color: "white"}}>
                                 ?
                             </span>
@@ -82,7 +88,7 @@ const Navbar = () => {
 
             {tab==1 && <Courses/>}
             {tab==2 && <Clubs/>}
-            
+            {tab==3 && <Projects/>}
             
         </div>
     )

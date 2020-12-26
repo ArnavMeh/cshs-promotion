@@ -147,7 +147,7 @@ const Clubs = () => {
                         {events.map((item, index) => {
                             if (index%2==evenOdd) {
                                 return(
-                                    <div style={{backgroundColor:"#f5f5f5", padding:"10px 20px 10px 20px", margin:"10px", borderRadius:"10px", minWidth:"30%"}}>
+                                    <div style={{backgroundColor:"#fafafa", padding:"10px 20px 10px 20px", margin:"10px", borderRadius:"10px", width: 95/(events.length/2) + "%"}}>
                                         <div>{item.name}</div>
                                         <div style={{color:"gray", fontSize:"13px"}}>{item.description}</div>
                                         <a style={{fontSize:"13px"}} href={item.link} target="_blank">Learn More</a>
