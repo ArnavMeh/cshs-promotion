@@ -1,7 +1,7 @@
 import { Card } from 'antd'
 import React from 'react'
 import web from '../images/course_web.PNG'
-import {List, Timeline} from 'antd'
+import {List, Timeline, Descriptions} from 'antd'
 
 const courses = [
     {
@@ -35,14 +35,62 @@ const courses = [
         url: "https://hsecourses.netlify.app/course/"
     }
 ]
+const recommendations = {
+    "CS": [
+        {
+            name: "Freshman",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        },
+        {
+            name: "Sophomore",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        },
+        {
+            name: "Junior",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        },
+        {
+            name: "Senior",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        }
+    ],
+    "IT Support": [
+        {
+            name: "Freshman",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        },
+        {
+            name: "Sophomore",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        },
+        {
+            name: "Junior",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        },
+        {
+            name: "Senior",
+            courses: ["English", "Fine Art or World Lang", "Geometry or Algebra II", "PE/Health", "Biology", "World Credit"]
+        }
+],
+}
+
+
+const section = {
+    display:"flex", justifyContent:"space-between", alignItems:"center", margin:"50px 0 100px 0", width:"100%"
+}
+const title = {
+    fontWeight:"500", fontSize:"20px", color:"#595959"
+}
 
 
 
 const Courses = () => {
     return (
         <div className="body">
-            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", height:"calc(5vw + 500px)"}}>
-                <div style={{width:"30%"}}>
+
+            <div style={title}>CS Courses At HSE</div>
+            <div style={section}>
+                <div style={{width:"30%", margin:"auto"}}>
                     <Timeline mode="right">
                         <Timeline.Item color="gray" label={courses[0].name}>&nbsp;</Timeline.Item>
                         <Timeline.Item color="#88b5ed">{courses[1].name}</Timeline.Item>
@@ -52,7 +100,7 @@ const Courses = () => {
                     </Timeline>
                 </div>
                 <List
-                    style={{width:"60%", borderRadius:"15px"}}
+                    style={{width:"65%", borderRadius:"15px"}}
                     dataSource={courses}
                     bordered={true}
                     renderItem={item => 
@@ -67,6 +115,34 @@ const Courses = () => {
                 ></List>
             </div>
             {/* <img src={web} style={{width:"40%"}}></img> */}
+
+            <div style={title}>Sample Schedule</div>
+            <div style={section}>
+                {["CS", "IT Support"].map((cat) => 
+                    <div style={{width:"47.5%"}}>
+                        <Descriptions bordered column={1}>
+                            <Descriptions.Item style={{textAlign:"center", padding:"10px 150px 10px 0", fontWeight:"500"}}>{cat} Students</Descriptions.Item>
+                            {recommendations[cat].map((item) => 
+                                <Descriptions.Item label={item.name}>
+                                    <div style={{display:"flex", justifyContent:"space-between", width:"100%"}}>
+                                        {[0,1].map((evenOdd) => 
+                                            <div style={{width:"50%", display:"flex", flexDirection:"column", alignItems:"center"}}>
+                                                {item.courses.map((courseName, index) =>
+                                                    <div>
+                                                        {index%2==evenOdd &&
+                                                            <div>{courseName}</div>
+                                                        }
+                                                    </div>
+                                                )}
+                                            </div>
+                                        )}
+                                    </div>
+                                </Descriptions.Item>
+                            )}
+                        </Descriptions>
+                    </div>
+                )}
+            </div>
         </div>
     )
 }

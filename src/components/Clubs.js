@@ -6,82 +6,89 @@ const clubs = [
     {
         name: "CS Honors Society (CSHS)",
         description: "this is a description of club 1",
-        url: "https://hseclubs.com"
+        url: "https://hseclubs.com",
+        type: 'success'
     },
     {
         name: "Girls Who Code",
         description: "this is a description of club 2",
-        url: "https://hseclubs.com"
+        url: "https://hseclubs.com",
+        type: 'warning'
     },
     {
         name: "HSE Hacks",
         description: "this is a description of club 3",
-        url: "https://hseclubs.com"
+        url: "https://hseclubs.com",
+        type: 'error'
     },
     {
         name: "HSE Apps",
         description: "this is a description of club 4",
-        url: "https://hseclubs.com"
+        url: "https://hseclubs.com",
+        type: 'error'
     },
+]
+const meetings = [
+    {
+        day: 25,
+        month: 12,
+        club: clubs[0],
+        time: "2:00pm"
+    },
+    {
+        day: 8,
+        month: 12,
+        club: clubs[2],
+        time: "2:00pm"
+    }
 ]
 
 
-
-
-
+const section = {
+    display:"flex", justifyContent:"space-between", alignItems:"center", margin:"50px 0 100px 0", width:"100%"
+}
+const title = {
+    fontWeight:"500", fontSize:"20px", color:"#595959"
+}
 
 
 
 const Clubs = () => {
 
-
-
     const getListData = (value) => {
-        let listData;
-        switch (value.date()) {
-            case 8:
-                listData = [
-                    { type: 'success', content: 'CSHS' },
-                    { type: 'warning', content: 'HSE Apps' }
-                ];
-                break;
-            case 15:
-                listData = [
-                    { type: 'error', content: 'CSHS' }
-                ];
-                break;
-            case 22:
-                listData = [
-                    { type: 'success', content: 'HSE Hacks' }
-                ];
-                break;
-            case 29:
-                listData = [
-                    { type: 'error', content: 'Some Event' }
-                ];
-                break;
-            default:
-        }
-        return listData || [];
+        const date = {day: value.date(), month: value.month()+1}
+        const meetingsFound = meetings.filter((meeting) => {
+            return meeting.day == date.day && meeting.month == date.month
+        })
+
+        const formattedMeetings = []
+        meetingsFound.map((meeting) => {
+            var newName = meeting.club.name
+            if (newName.indexOf("(") != -1) {
+                newName = newName.slice(0, newName.indexOf("(")-1)
+            }
+            
+            formattedMeetings.push({
+                type: meeting.club.type,
+                content: newName + " @ " + meeting.time
+            })
+        })
+
+        return formattedMeetings
     }
-      
-    const dateCellRender = (value) => {
-        const listData = getListData(value);
-        return (
-            <div>
-                {listData.map(item => 
-                    <Badge status={item.type} text={item.content} />
-                )}
-            </div>
-        );
-    }
-    
     
     return (
         <div className="body">
-            <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", height:"calc(5vw + 800px)"}}>
+            <div style={title}>CS Clubs At HSE</div>
+            <div style={section}>
                 <Card style={{borderRadius:"15px", width:"70%", border:"1px solid #d9d9d9"}}>
-                    <Calendar dateCellRender={dateCellRender}/>
+                    <Calendar dateCellRender={(value) =>
+                        <div>
+                            {getListData(value).map(item => 
+                                <Badge status={item.type} text={item.content} />
+                            )}
+                        </div>
+                    }/>
                 </Card>
                 <div style={{width:"25%"}}>
                     <Collapse style={{backgroundColor:"transparent", borderRadius:"15px"}}>
