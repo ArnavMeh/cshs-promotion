@@ -42,7 +42,38 @@ const meetings = [
         time: "2:00pm"
     }
 ]
-
+const events = [
+    {
+        name: "EasyCTF",
+        description: "High School Capture The Flag Hacking Contest - New contests available often",
+        link: 'https://www.easyctf.com/'
+    },
+    {
+        name: "Google Code-In",
+        description: "Open Source programming activities with prizes - usually in Dec-Jan",
+        link: 'https://developers.google.com/open-source/gci/'
+    },
+    {
+        name: "EasyCTF",
+        description: "High School Capture The Flag Hacking Contest - New contests available often",
+        link: 'https://www.easyctf.com/'
+    },
+    {
+        name: "EasyCTF",
+        description: "High School Capture The Flag Hacking Contest - New contests available often",
+        link: 'https://www.easyctf.com/'
+    },
+    {
+        name: "Google Code-In",
+        description: "Open Source programming activities with prizes - usually in Dec-Jan",
+        link: 'https://developers.google.com/open-source/gci/'
+    },
+    {
+        name: "Google Code-In",
+        description: "Open Source programming activities with prizes - usually in Dec-Jan",
+        link: 'https://developers.google.com/open-source/gci/'
+    },
+]
 
 const section = {
     display:"flex", justifyContent:"space-between", alignItems:"center", margin:"50px 0 100px 0", width:"100%"
@@ -107,6 +138,25 @@ const Clubs = () => {
                         )}
                     </Collapse>
                 </div>
+            </div>
+
+            <div style={title}>Other CS Events</div>
+            <div style={{...section, border:"1px solid #d9d9d9", borderRadius:"15px", padding:"10px", display:"block"}}>
+                {[0,1].map((evenOdd) => 
+                    <div style={{display:"flex", justifyContent:"space-between"}}>
+                        {events.map((item, index) => {
+                            if (index%2==evenOdd) {
+                                return(
+                                    <div style={{backgroundColor:"#f5f5f5", padding:"10px 20px 10px 20px", margin:"10px", borderRadius:"10px", minWidth:"30%"}}>
+                                        <div>{item.name}</div>
+                                        <div style={{color:"gray", fontSize:"13px"}}>{item.description}</div>
+                                        <a style={{fontSize:"13px"}} href={item.link} target="_blank">Learn More</a>
+                                    </div>
+                                )
+                            }
+                        })}
+                    </div>
+                )}
             </div>
         </div>
     )

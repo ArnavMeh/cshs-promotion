@@ -73,7 +73,38 @@ const recommendations = {
         }
 ],
 }
-
+const resources = [
+    {
+        name: "Udemy",
+        description:"this is a description of Udemy's stuff",
+        link: 'https://udemy.com'
+    },
+    {
+        name: "CyberStart",
+        description:"this is a description of CyberStarts' stuff",
+        link: 'https://cyberstartidk.com'
+    },
+    {
+        name: "Udemy",
+        description:"this is a description of Udemy's stuff",
+        link: 'https://udemy.com'
+    },
+    {
+        name: "CyberStart",
+        description:"this is a description of CyberStarts' stuff",
+        link: 'https://cyberstartidk.com'
+    },
+    {
+        name: "Udemy",
+        description:"this is a description of Udemy's stuff",
+        link: 'https://udemy.com'
+    },
+    {
+        name: "CyberStart",
+        description:"this is a description of CyberStarts' stuff",
+        link: 'https://cyberstartidk.com'
+    }
+]
 
 const section = {
     display:"flex", justifyContent:"space-between", alignItems:"center", margin:"50px 0 100px 0", width:"100%"
@@ -140,6 +171,25 @@ const Courses = () => {
                                 </Descriptions.Item>
                             )}
                         </Descriptions>
+                    </div>
+                )}
+            </div>
+
+            <div style={title}>Other Learning Resources</div>
+            <div style={{...section, border:"1px solid #d9d9d9", borderRadius:"15px", padding:"10px", display:"block"}}>
+                {[0,1].map((evenOdd) => 
+                    <div style={{display:"flex", justifyContent:"space-between"}}>
+                        {resources.map((item, index) => {
+                            if (index%2==evenOdd) {
+                                return(
+                                    <div style={{backgroundColor:"#f5f5f5", padding:"10px 20px 10px 20px", margin:"10px", borderRadius:"10px", minWidth:"30%"}}>
+                                        <div>{item.name}</div>
+                                        <div style={{color:"gray", fontSize:"13px"}}>{item.description}</div>
+                                        <a style={{fontSize:"13px"}} href={item.link} target="_blank">Learn More</a>
+                                    </div>
+                                )
+                            }
+                        })}
                     </div>
                 )}
             </div>
